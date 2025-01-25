@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:duo_clone/screens/assesment/screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -48,7 +49,7 @@ class ScreenTryState extends State<ScreenTry> {
     });
   }
 
-void _checkAnswer() {
+  void _checkAnswer() {
     final option = options.firstWhere(
       (option) => option['text'] == selectedOption,
       orElse: () => {},
@@ -62,7 +63,7 @@ void _checkAnswer() {
   void _playSoundAndShowAnimation(BuildContext context, bool isCorrect) async {
     try {
       String soundAsset =
-          isCorrect ? 'assets/sound/success.mp3' : 'assets/sound/fail.mp3';
+          isCorrect ? 'assets/sound/success.mp3' : 'assets/sound/failure.mp3';
       await player.setAsset(soundAsset);
       await player.play();
 
@@ -90,49 +91,57 @@ void _checkAnswer() {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Lottie.asset(animationType == 'success'
-                      ? 'assets/animation/correct.json'
-                      : 'assets/animation/fail.json'),
-                  if (isCorrect)
-                    ...[
-                      const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          // Navigate to next screen if needed.
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.green,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        child: const Text(
-                          'LANJUTKAN',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
-                        ),
-                      )
-                    ]
-                  else ...[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 4,
+                    width: double.infinity,
+                    child: Lottie.asset(animationType == 'success'
+                        ? 'assets/animation/correct.json'
+                        : 'assets/animation/fail.json'),
+                  ),
+                  if (isCorrect) ...[
                     const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          // Navigate to next screen if needed.
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.red,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return ScreenTwo();
+                        }));
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Text(
-                          'ULANGI',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      child: const Text(
+                        'LANJUTKAN',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    )
+                  ] else ...[
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        // Navigate to next screen if needed.
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                      )
+                      ),
+                      child: const Text(
+                        'ULANGI',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    )
                   ]
                 ],
               ),
@@ -211,7 +220,7 @@ void _checkAnswer() {
                     questionText,
                     style: const TextStyle(
                         fontSize: 24,
-                        color: Colors.greenAccent,
+                        color: Colors.blueGrey,
                         fontWeight: FontWeight.bold),
                   ),
                 )

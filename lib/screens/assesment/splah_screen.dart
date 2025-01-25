@@ -1,6 +1,7 @@
 import 'dart:async';
+import 'package:duo_clone/screens/assesment/tryscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:duo_clone/screens/screen1.dart';
+// import 'package:duo_clone/screens/screen1.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void navigateToHomeScreen() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ScreenOne()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ScreenTry()));
 
   }
 
