@@ -18,7 +18,7 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
     super.initState();
     Timer(Duration(seconds: 5), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return HomePage();
+        return Homepage();
       }));
     });
   }

@@ -3,6 +3,7 @@ import 'package:duo_clone/screens/assesment/screen3.dart';
 import 'package:duo_clone/screens/assesment/splah_screen.dart';
 import 'package:duo_clone/screens/assesment/tryscreen.dart';
 import 'package:duo_clone/screens/home/home.dart';
+// import 'package:duo_clone/screens/home/test.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return HomePage();
+    return Homepage();
     // return Scaffold(
     //   appBar: AppBar(title: const Text('Question Options')),
     //   body: FutureBuilder<DocumentSnapshot>(
