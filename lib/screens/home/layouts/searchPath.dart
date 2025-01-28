@@ -5,7 +5,7 @@ import 'package:iconsax/iconsax.dart';
 
 Padding searchPath() {
   return Padding(
-    padding: EdgeInsets.all(20),
+    padding: EdgeInsets.symmetric(vertical: 20),
     child: TextField(
       decoration: InputDecoration(
           hintText: 'Cari...',
